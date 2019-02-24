@@ -28,7 +28,7 @@
 #ifdef __AARCH64EB__
 #define COMPAT_UTS_MACHINE	"armv8b\0\0"
 #else
-#define COMPAT_UTS_MACHINE	"armv8l\0\0"
+#define COMPAT_UTS_MACHINE	"aarch64\0\0"
 #endif
 
 typedef u32		compat_size_t;
