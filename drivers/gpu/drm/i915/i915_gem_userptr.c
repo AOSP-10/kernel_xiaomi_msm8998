@@ -765,7 +765,15 @@ i915_gem_userptr_put_pages(struct drm_i915_gem_object *obj)
 		struct page *page = sg_page_iter_page(&sg_iter);
 
 		if (obj->dirty)
-			set_page_dirty(page);
+			/*
+			 * As this may not be anonymous memory (e.g. shmem)
+			 * but exist on a real mapping, we have to lock
+			 * the page in order to dirty it -- holding
+			 * the page reference is not sufficient to
+			 * prevent the inode from being truncated.
+			 * Play safe and take the lock.
+			 */
+			set_page_dirty_lock(page);
 
 		mark_page_accessed(page);
 		page_cache_release(page);
