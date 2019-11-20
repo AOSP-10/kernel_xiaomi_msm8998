@@ -72,6 +72,7 @@ EXPORT_SYMBOL(test_and_change_bit);
 EXPORT_SYMBOL(_mcount);
 NOKPROBE_SYMBOL(_mcount);
 #endif
+
 	/* caching functions */
 EXPORT_SYMBOL(__dma_inv_range);
 EXPORT_SYMBOL(__dma_clean_range);
